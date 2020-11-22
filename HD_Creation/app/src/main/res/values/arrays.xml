@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="week">
+        <item>전체</item>
+        <item>1주차</item>
+        <item>2주차</item>
+        <item>3주차</item>
+        <item>4주차</item>
+        <item>5주차</item>
+    </string-array>
+    <string-array name="time">
+        <item>아침</item>
+        <item>점심</item>
+        <item>저녁</item>
+    </string-array>
+    <string-array name="kind">
+        <item>음식1</item>
+        <item>음식2</item>
+        <item>음식3</item>
+        <item>음식4</item>
+        <item>음식5</item>
+    </string-array>
+</resources>

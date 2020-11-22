@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:background="#00000000"
+                android:id="@+id/dial_img"
+                android:onClick="dial_Click"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/food"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="10">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="10">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10">
+                        <TextView
+                            android:id="@+id/dial_tv1"
+                            android:text="안녕하세요"
+                            style="@style/textStyle_noSize"
+                            android:textSize="20sp"
+                            android:background="@drawable/note_dialog"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <Button
+            android:id="@+id/dial_btn1"
+            android:text="확 인"
+            android:textSize="18sp"
+            android:onClick="dial_Click"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="@drawable/btn_dialog"/>
+        <Button
+            android:id="@+id/dial_btn2"
+            android:text="취 소"
+            android:textSize="18sp"
+            android:onClick="dial_Click"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="@drawable/btn_dialog"/>
+    </LinearLayout>
+</LinearLayout>
