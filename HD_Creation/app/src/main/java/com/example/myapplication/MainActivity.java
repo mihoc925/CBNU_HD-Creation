@@ -70,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
     Spinner spTime, spKind;
     String nYear, nMonth, nDay = "";    // 현재 날짜
     String sYear,sMonth,sDay = "";      // 선택 날짜
-    String timeKind = "morning";
-    int foodKind = 1;
+    String timeKind = "morning";        // 시간 구분(아침/점심/저녁)
+    int mFoodKind = 1;                  // Manage 테이블 저장용 변수 (음식1~5)
+    String foodKind = "한식";           // Food 테이블 구분 변수 => (한식/양식..)
 
     // DB 관련 변수
     DatabaseHelper dbHelper;
@@ -120,17 +121,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initSet(){
-        setFoodKind();
+        setmFoodKind();
         setTimeKind();
         setDate();
     }
 
     public void runGame(){
-        setList(foodKind);
+        setList();
         question();
     }
 
-    private void setFoodKind(){ //음식구분 스피너
+    private void setmFoodKind(){ //음식구분 스피너
         spKind = (Spinner)findViewById(R.id.spKind);
         spKind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -138,16 +139,16 @@ public class MainActivity extends AppCompatActivity {
                 String tmpStr = ""+adapterView.getItemAtPosition(i);
                 tmpStr = tmpStr.replaceAll(" ","");
                 if(tmpStr.equals("음식1"))
-                    foodKind = 1;
+                    mFoodKind = 1;
                 else if(tmpStr.equals("음식2"))
-                    foodKind = 2;
+                    mFoodKind = 2;
                 else if(tmpStr.equals("음식3"))
-                    foodKind = 3;
+                    mFoodKind = 3;
                 else if(tmpStr.equals("음식4"))
-                    foodKind = 4;
+                    mFoodKind = 4;
                 else
-                    foodKind = 5;
-                runGame();      // 게임 리셋
+                    mFoodKind = 5;
+//                runGame();      // 게임 리셋
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
@@ -195,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
         btnCalendar.setText("날짜선택\n"+sYear+"-"+sMonth+"-"+sDay);
     }
 
-    private void setList(int foodKind){ // 게임 초기 설정
+    private void setList(){ // 게임 초기 설정
         wcAllRound = init_Dialog.wcAllRound; // 모드 수
         wcRound = wcAllRound;
         Button btnMode = (Button)findViewById(R.id.btnMode);
@@ -207,8 +208,8 @@ public class MainActivity extends AppCompatActivity {
         wc_food1_arr3.clear();
         wc_food1_arr4.clear();
 
-//        Cursor cursor = db.rawQuery("select * from Food",null);
-        Cursor cursor = db.rawQuery("select * from Food where foodKind='"+foodKind+"'",null);
+        Cursor cursor = db.rawQuery("select * from Food",null);
+//        Cursor cursor = db.rawQuery("select * from Food where mFoodKind='"+mFoodKind+"'",null); // 매개변수로 mFoodKind 선언
 
         int j = 0;
         if(wcAllRound > cursor.getCount()){
@@ -297,8 +298,8 @@ public class MainActivity extends AppCompatActivity {
             dataSet();
 
             // 이미지 설정
-            Cursor c = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList).toString()+"' and foodKind='"+foodKind+"'", null);
-            Cursor c2 = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList+1).toString()+"' and foodKind='"+foodKind+"'", null);
+            Cursor c = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList).toString()+"'", null);
+            Cursor c2 = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList+1).toString()+"'", null);
 
             String photo = null;
             while (c.moveToNext()){
@@ -327,28 +328,20 @@ public class MainActivity extends AppCompatActivity {
 
     // 진행 상황
     private void progress() {
-        // 라운드 버튼 안눌렀을 경우
         if(wcAllRound == 0) {
             customDialog("init");
             return;
         }
-        // 수정 [wcList == wcAll_List.size() -> 즉시변경으로]
         if((wcAll_List.size() - wcList) <= 2){
             // 최종 결과
             if(wcAll_List.size() == 1){
-//================================================================================================== 작업중_결과 //==================================================================================================
                 wcAllRound = 0; // 게임 종료로 설정
                 String imgValue = "";
                 String nameValue = wcAll_List.get(wcList);
 
-
-                // 커스텀 다이얼로그 띄우기 추가??
-//                megBox("결과는 " + wcAll_List.get(wcList) + "입니다.");
                 customDialog("endgame");
 
-
-                // 검색 -> 없으면 insert // 있으면 update
-                Cursor cursor = db.rawQuery("select * from Manage where dateKind='"+sYear+sMonth+sDay+"' and timeKind='"+timeKind+"' and foodKind='"+foodKind+"'",null); // 날짜,시간 조회
+                Cursor cursor = db.rawQuery("select * from Manage where dateKind='"+sYear+sMonth+sDay+"' and timeKind='"+timeKind+"' and foodKind='"+mFoodKind+"'",null); // 날짜,시간 조회
                 Cursor img_cursor = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList)+"'",null); // 이름에 맞는 img
                 while (img_cursor.moveToNext()) {
                     imgValue = img_cursor.getString(0);  // 이미지 값
@@ -356,12 +349,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if(cursor.getCount() == 0) {
                     db.execSQL("insert into Manage (dateKind, timeKind, foodKind, img, name) values (?, ?, ?, ?, ?)",
-                            new String[]{sYear + sMonth + sDay, timeKind, ""+foodKind, imgValue, nameValue});
+                            new String[]{sYear + sMonth + sDay, timeKind, ""+mFoodKind, imgValue, nameValue});
                 }else{
                     db.execSQL("update Manage set img=?, name=? where dateKind=? and timeKind=? and foodKind=?",
-                            new String[] {imgValue, nameValue, sYear + sMonth + sDay, timeKind, ""+foodKind});
+                            new String[] {imgValue, nameValue, sYear + sMonth + sDay, timeKind, ""+mFoodKind});
                 }
-//==================================================================================================        //==================================================================================================
             // 중간 라운드
             }else{
                 wcRound /= 2;

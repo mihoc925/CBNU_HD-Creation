@@ -23,6 +23,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,6 +38,7 @@ public class Management extends AppCompatActivity{
     // 모든 이미지버튼, 텍스트뷰
     ImageButton[] l_i = new ImageButton[16];
     TextView[] l_t = new TextView[16];
+    TextView morningTxt, lunchTxt, dinnerTxt;
     // 이미지 주소, 텍스트 값
     int[][] imgVal = new int[3][5];
     String[][] txtVal = new String[3][5];
@@ -137,9 +139,13 @@ public class Management extends AppCompatActivity{
                 l_t[z].setText("");
             }
         }
+        morningTxt.setText("아침");
+        lunchTxt.setText("점심");
+        dinnerTxt.setText("저녁");
     }
 
     private void setValue(){
+        // 데이터 검색
         int tmpI = 0;
         int y = 0;
         for(int x=0; x<3; x++) {
@@ -162,16 +168,12 @@ public class Management extends AppCompatActivity{
                 cursor.moveToNext();
             }
         }
-//        // 임시 측정 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 순서 변경문제 @@ 15까지 그대로
-//        l_i[1] = (ImageButton) findViewById(R.id.l_i1);
-//        l_i[2] = (ImageButton) findViewById(R.id.l_i2);
-//        l_i[3] = (ImageButton) findViewById(R.id.l_i3);
-//        l_i[4] = (ImageButton) findViewById(R.id.l_i4);
-//        l_i[5] = (ImageButton) findViewById(R.id.l_i5);
 
+        // 데이터 지정
         Resources res = mainContext.getResources();
         Bitmap bm;
 
+        int[] Kcal = new int[3]; // 칼로리 계산
         int k = 0;
         for(int i=0; i<3; i++) {
             for(int j=0; j<5; j++){
@@ -179,14 +181,34 @@ public class Management extends AppCompatActivity{
                 if(imgVal[i][j] != 0) {
                     bm = BitmapFactory.decodeResource(res, R.drawable.food + imgVal[i][j]); // 이미지 불러오기 메모리 오류 > 스레드+비트맵 설정해봤지만, 메모리 쪽의 다른 문제
                     l_i[k].setImageBitmap(bm);
-                }else{
+                }else{ // 이미지가 없는 부분
 //                    bm = BitmapFactory.decodeResource(res, R.drawable.food);
 //                    l_i[k].setImageBitmap(bm);
                 }
-                if(txtVal[i][j] != null)
-                    l_t[k].setText(""+txtVal[i][j]);
+                if(txtVal[i][j] != null) {
+                    l_t[k].setText("" + txtVal[i][j]);
+                    Kcal[i] += totalKcal(txtVal[i][j]);
+                }
             }
         }
+        morningTxt.setText("("+Kcal[0]+" Kcal)");
+        lunchTxt.setText("("+Kcal[1]+" Kcal)");
+        dinnerTxt.setText("("+Kcal[2]+" Kcal)");
+    }
+
+    // 시간 분류 텍스트뷰 '총 칼로리' 지정
+    private int totalKcal(String txtData){
+        int kcal = 0;
+        try { // 칼로리 계산/ 저장 => 데이터 갯수만큼 select 반복하기 때문에 테스트 해봐야 함
+            Cursor cursor = db.rawQuery("select note1 from Food where name='" + txtData + "'", null);
+            cursor.moveToFirst();
+            if(cursor.getCount() != 0) {
+                kcal = Integer.parseInt(cursor.getString(0));
+            }
+        }catch (NullPointerException e){
+            Log.e(TAG, "[error]--"+e);
+        }
+        return kcal;
     }
 
     private void allView(){
@@ -196,6 +218,9 @@ public class Management extends AppCompatActivity{
             l_i[i] = (ImageButton)findViewById(r_img[i-1]);
             l_t[i] = (TextView)findViewById(r_txt[i-1]);
         }
+        morningTxt = (TextView)findViewById(R.id.morningTxt);
+        lunchTxt = (TextView)findViewById(R.id.lunchTxt);
+        dinnerTxt = (TextView)findViewById(R.id.dinnerTxt);
     }
 
 // 어뎁터 사용시

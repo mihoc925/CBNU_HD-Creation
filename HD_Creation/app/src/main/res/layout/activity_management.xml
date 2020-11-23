@@ -69,14 +69,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="10">
-                    <TextView
-                        android:text="아침"
-                        android:background="@drawable/border"
-                        android:textSize="28sp"
-                        style="@style/textStyle_noSize"
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="10"/>
+                        android:layout_weight="10"
+                        android:orientation="vertical">
+                        <TextView
+                            style="@style/textStyle_noSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="10"
+                            android:background="@drawable/border"
+                            android:text="아침"
+                            android:textSize="24sp" />
+                        <TextView
+                            android:id="@+id/morningTxt"
+                            android:text="(0 Kcal)"
+                            android:background="@drawable/border"
+                            android:textSize="14sp"
+                            style="@style/textStyle_noSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="5"/>
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -182,14 +197,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="10">
-                    <TextView
-                        android:text="점심"
-                        android:background="@drawable/border"
-                        android:textSize="28sp"
-                        style="@style/textStyle_noSize"
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="10"/>
+                        android:layout_weight="10"
+                        android:orientation="vertical">
+                        <TextView
+                            style="@style/textStyle_noSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="10"
+                            android:background="@drawable/border"
+                            android:text="점심"
+                            android:textSize="24sp" />
+                        <TextView
+                            android:id="@+id/lunchTxt"
+                            android:text="(0 Kcal)"
+                            android:background="@drawable/border"
+                            android:textSize="14sp"
+                            style="@style/textStyle_noSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="5"/>
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -295,14 +325,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="10">
-                    <TextView
-                        android:text="저녁"
-                        android:background="@drawable/border"
-                        android:textSize="28sp"
-                        style="@style/textStyle_noSize"
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="10"/>
+                        android:layout_weight="10"
+                        android:orientation="vertical">
+                        <TextView
+                            style="@style/textStyle_noSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="10"
+                            android:background="@drawable/border"
+                            android:text="저녁"
+                            android:textSize="24sp" />
+                        <TextView
+                            android:id="@+id/dinnerTxt"
+                            android:text="(0 Kcal)"
+                            android:background="@drawable/border"
+                            android:textSize="14sp"
+                            style="@style/textStyle_noSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="5"/>
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
