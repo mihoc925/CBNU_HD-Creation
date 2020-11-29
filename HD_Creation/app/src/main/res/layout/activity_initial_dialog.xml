@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             android:text="모드 선택"
             android:textColor="#FFFFFF"
-            android:background="#2E9AFE"
+            android:background="#000000"
             android:textStyle="bold"
             android:gravity="center"
             android:autoSizeTextType="uniform"/>

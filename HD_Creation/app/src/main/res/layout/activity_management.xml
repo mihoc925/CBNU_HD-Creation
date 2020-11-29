@@ -5,9 +5,10 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:background="@drawable/manage04"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="5">
+        android:layout_weight="2">
     </LinearLayout>
     <LinearLayout
         android:layout_width="0dp"
@@ -15,17 +16,18 @@
         android:layout_weight="100"
         android:orientation="vertical">
         <LinearLayout
+            android:background="@drawable/manage04"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="7">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8">
+                android:layout_weight="5">
                 <Button
                     android:id="@+id/manageCalendar"
                     android:text="캘린더"
-                    android:background="@drawable/btn_calendar"
+                    android:background="@drawable/manage01"
                     style="@style/textStyle_noSize"
                     android:textSize="16sp"
                     android:onClick="onClick"
@@ -33,437 +35,488 @@
                     android:layout_height="match_parent"/>
             </LinearLayout>
             <LinearLayout
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/manage02"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="16sp"
-                    style="@style/textStyle_noSize"
-                    android:text="👈  😊 오늘의 식단표"/>
+                android:layout_weight="15">
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8">
-
-            </LinearLayout>
+                android:layout_weight="5"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="50"
-            android:background="#E0F8EC">
+            android:background="@drawable/manage04">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:background="#ffffff"
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:background="#ffffff"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="10">
+
                     <LinearLayout
+                        android:background="@drawable/manage04"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <TextView
+                            android:background="@drawable/manage01"
                             style="@style/textStyle_noSize"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="10"
-                            android:background="@drawable/border"
                             android:text="아침"
                             android:textSize="24sp" />
+
                         <TextView
                             android:id="@+id/morningTxt"
-                            android:text="(0 Kcal)"
-                            android:background="@drawable/border"
-                            android:textSize="14sp"
                             style="@style/textStyle_noSize"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="5"/>
+                            android:layout_weight="5"
+                            android:text="(0 Kcal)"
+                            android:textSize="14sp" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:background="@drawable/manage04"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i1"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t1"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i2"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t2"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i3"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t3"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i4"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t4"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i5"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t5"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
+                    android:background="#ffffff"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="10">
+
                     <LinearLayout
+                        android:background="@drawable/manage04"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <TextView
+                            android:background="@drawable/manage01"
                             style="@style/textStyle_noSize"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="10"
-                            android:background="@drawable/border"
                             android:text="점심"
                             android:textSize="24sp" />
+
                         <TextView
                             android:id="@+id/lunchTxt"
-                            android:text="(0 Kcal)"
-                            android:background="@drawable/border"
-                            android:textSize="14sp"
                             style="@style/textStyle_noSize"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="5"/>
+                            android:layout_weight="5"
+                            android:text="(0 Kcal)"
+                            android:textSize="14sp" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:background="@drawable/manage04"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i6"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t6"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i7"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t7"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i8"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t8"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i9"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t9"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i10"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t10"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
+                    android:background="#ffffff"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="10">
+
                     <LinearLayout
+                        android:background="@drawable/manage04"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <TextView
+                            android:background="@drawable/manage01"
                             style="@style/textStyle_noSize"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="10"
-                            android:background="@drawable/border"
                             android:text="저녁"
                             android:textSize="24sp" />
+
                         <TextView
                             android:id="@+id/dinnerTxt"
-                            android:text="(0 Kcal)"
-                            android:background="@drawable/border"
-                            android:textSize="14sp"
                             style="@style/textStyle_noSize"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="5"/>
+                            android:layout_weight="5"
+                            android:text="(0 Kcal)"
+                            android:textSize="14sp" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:background="@drawable/manage04"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i11"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t11"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i12"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t12"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i13"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t13"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i14"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t14"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/l_i15"
+                            style="@style/imgBtnStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="30"
-                            android:background="#ffffffff"
-                            style="@style/imgBtnStyle_basic"/>
+                            android:background="#ffffff" />
 
                         <TextView
                             android:id="@+id/l_t15"
+                            style="@style/textStyle_basic"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="10"
-                            style="@style/textStyle_basic"/>
+                            android:layout_weight="10" />
                     </LinearLayout>
                 </LinearLayout>
 
-<!--                <ListView-->
-<!--                    android:id="@+id/manage_list"-->
-<!--                    android:divider="#ffcc22"-->
-<!--                    android:dividerHeight="1dp"-->
-<!--                    android:choiceMode="singleChoice"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"/>-->
+                <!--                <ListView-->
+                <!--                    android:id="@+id/manage_list"-->
+                <!--                    android:divider="#ffcc22"-->
+                <!--                    android:dividerHeight="1dp"-->
+                <!--                    android:choiceMode="singleChoice"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="match_parent"/>-->
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:background="@drawable/manage04"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="5">
+        android:layout_weight="2">
         <ImageButton
             android:id="@+id/l_i"
             android:layout_width="0dp"

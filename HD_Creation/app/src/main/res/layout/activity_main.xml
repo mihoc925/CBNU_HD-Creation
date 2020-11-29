@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main01"
     android:orientation="vertical">
 
     <LinearLayout
@@ -19,7 +20,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="10">
                 <TextView
-                    android:background="@drawable/main_border"
+                    android:background="@drawable/main02"
                     android:id="@+id/wc_tv1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -30,7 +31,7 @@
                     android:text="라운드: 0/0강\n문제: 0번" />
 
                 <Button
-                    android:background="@drawable/main_border"
+                    android:background="@drawable/main02"
                     android:onClick="onClick"
                     android:id="@+id/btnMode"
                     android:layout_width="0dp"
@@ -38,7 +39,7 @@
                     android:layout_weight="10"
                     android:text="모드선택"/>
                 <Button
-                    android:background="@drawable/main_border"
+                    android:background="@drawable/main02"
                     android:onClick="onClick"
                     android:id="@+id/btnCalendar"
                     android:layout_width="0dp"
@@ -46,14 +47,14 @@
                     android:layout_weight="10"
                     android:text="날짜선택"/>
                 <Spinner
-                    android:background="@drawable/main_border"
+                    android:background="@drawable/main02"
                     android:id="@+id/spTime"
                     android:entries="@array/time"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="8"/>
                 <Spinner
-                    android:background="@drawable/main_border"
+                    android:background="@drawable/main02"
                     android:id="@+id/spKind"
                     android:entries="@array/kind"
                     android:layout_width="0dp"
@@ -61,7 +62,7 @@
                     android:layout_weight="8"/>
 
                 <ImageButton
-                    android:background="@drawable/main_border"
+                    android:background="@drawable/main02"
                     android:id="@+id/btnManage"
                     android:src="@drawable/icon_manage"
                     android:layout_width="0dp"
@@ -86,8 +87,8 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:background="#58ACFA"
+            android:layout_weight="20"
+            android:background="@drawable/main03"
             android:orientation="vertical">
 
             <ImageButton
@@ -97,14 +98,15 @@
                 android:layout_weight="15"
                 android:onClick="onClick"
                 android:background="#ffffff"
-                android:layout_margin="10dp"
                 android:scaleType="centerCrop" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@drawable/note"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:paddingTop="10dp"
                 android:layout_weight="10">
                 <LinearLayout
                     android:layout_width="0dp"
@@ -128,7 +130,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center|left"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:text="name"/>
                     </LinearLayout>
                     <LinearLayout
@@ -217,22 +219,19 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3">
-            <TextView
+            android:layout_weight="5">
+            <ImageView
+                android:src="@drawable/main04"
+                android:scaleType="center"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="VS"
-                android:textColor="#D7DF01"
-                android:textStyle="bold"
-                android:textSize="36sp"/>
+                android:layout_height="match_parent"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:background="#58ACFA"
+            android:layout_weight="20"
+            android:background="@drawable/main03"
             android:orientation="vertical">
             <ImageButton
                 android:id="@+id/wc_food2_img"
@@ -241,14 +240,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="15"
-                android:layout_margin="10dp"
                 android:scaleType="centerCrop" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/note"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:paddingTop="10dp"
                 android:layout_weight="10">
                 <LinearLayout
                     android:layout_width="0dp"
@@ -271,7 +271,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center|left"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:text="name"/>
                     </LinearLayout>
                     <LinearLayout
