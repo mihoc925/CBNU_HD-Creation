@@ -14,21 +14,109 @@
             <ImageView
                 android:background="#00000000"
                 android:id="@+id/dial_img"
-                android:onClick="dial_Click"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/food"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/background01"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="10">
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:orientation="vertical">
+                        <ImageButton
+                            android:id="@+id/wc_result_img1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="30"
+                            android:onClick="onClick"
+                            android:background="#ffffff"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:scaleType="centerCrop" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:background="@drawable/note"
+                            android:layout_margin="10dp"
+                            android:layout_weight="10">
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center|left"
+                                android:textSize="16sp"
+                                android:text="칼로리: "/>
+                            <TextView
+                                android:id="@+id/wc_result_tv1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:textSize="16sp"
+                                android:text="kcal"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+                        <ImageView
+                            android:padding="35dp"
+                            android:src="@drawable/arrow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:orientation="vertical">
+                        <ImageButton
+                            android:id="@+id/wc_result_img2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="30"
+                            android:onClick="onClick"
+                            android:background="#ffffff"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:scaleType="centerCrop" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:background="@drawable/note"
+                            android:layout_margin="10dp"
+                            android:layout_weight="10">
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center|left"
+                                android:textSize="16sp"
+                                android:text="칼로리: "/>
+                            <TextView
+                                android:id="@+id/wc_result_tv2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:textSize="16sp"
+                                android:text="kcal"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -37,6 +125,11 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="5">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/diet1"
+                            android:scaleType="centerCrop"/>
 
                     </LinearLayout>
                     <LinearLayout
@@ -44,11 +137,11 @@
                         android:layout_height="match_parent"
                         android:layout_weight="10">
                         <TextView
-                            android:id="@+id/dial_tv1"
-                            android:text="안녕하세요"
+                            android:id="@+id/wc_result_tv"
+                            android:text='"이 음식으로 대체하는 건 어때?"'
                             style="@style/textStyle_noSize"
                             android:textSize="20sp"
-                            android:background="@drawable/note_dialog"
+                            android:background="@drawable/background02"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"/>
                     </LinearLayout>
@@ -60,7 +153,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10">
+        android:layout_weight="7">
         <Button
             android:id="@+id/dial_btn1"
             android:text="확 인"

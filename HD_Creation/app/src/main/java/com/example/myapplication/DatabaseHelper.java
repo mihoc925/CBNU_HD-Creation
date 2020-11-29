@@ -8,7 +8,7 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static String DATABASE_NAME = "WorldCupGame.db";         // DB 이름
-    private static int DATABASE_VERSION = 8;             // 버전
+    private static int DATABASE_VERSION = 12;             // 버전
     public static final String TAG = "DatabaseHelper";
 
     public DatabaseHelper(Context context) {
@@ -35,6 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String CREATE_Food = "create table Food ("+
                 "_id integer PRIMARY KEY autoincrement, "+
                 "foodKind, "+
+                "foodType, "+
                 "img, "+
                 "name, "+
                 "note1, "+
@@ -72,39 +73,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private void initData(SQLiteDatabase db){   // foodKind 테이블 삭제하고 -> manage에서 관리?
         try {
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '1', '비빔밥', '637', '84.8', '30.9', '19.4');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '2', '칼국수', '540', '104.3', '23.1', '3.5');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '3', '시리얼', '354', '85', '5', '3.7');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '4', '햄버거', '619', '48', '29', '34');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '5', '치킨', '2880', '137.2', '164.3', '180');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '6', '순대국밥', '673', '93.5', '28.6', '20.6');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '7', '뼈해장국', '203', '8.5', '25.6', '7.8');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '8', '김밥', '322', '46', '11.1', '10.5');" );
-
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '6', '임시1', '322', '46', '11.1', '10.5');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '5', '임시2', '322', '46', '11.1', '10.5');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '4', '임시3', '322', '46', '11.1', '10.5');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '3', '임시4', '322', '46', '11.1', '10.5');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '2', '임시5', '322', '46', '11.1', '10.5');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('1', '1', '임시6', '322', '46', '11.1', '10.5');" );
-
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('2', '0', '임시1', '637', '84.8', '30.9', '19.4');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('2', '0', '임시2', '637', '84.8', '30.9', '19.4');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('2', '0', '임시3', '637', '84.8', '30.9', '19.4');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('2', '0', '임시4', '637', '84.8', '30.9', '19.4');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('2', '0', '임시5', '637', '84.8', '30.9', '19.4');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('2', '0', '임시6', '637', '84.8', '30.9', '19.4');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('2', '0', '임시7', '637', '84.8', '30.9', '19.4');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('2', '0', '임시8', '637', '84.8', '30.9', '19.4');" );
-
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('3', '1', '비빔밥', '637', '84.8', '30.9', '19.4');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('3', '2', '칼국수', '540', '104.3', '23.1', '3.5');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('3', '3', '시리얼', '354', '85', '5', '3.7');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('3', '4', '햄버거', '619', '48', '29', '34');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('3', '5', '치킨', '2880', '137.2', '164.3', '180');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('3', '6', '순대국밥', '673', '93.5', '28.6', '20.6');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('3', '7', '뼈해장국', '203', '8.5', '25.6', '7.8');" );
-            db.execSQL( "insert into Food (foodKind, img, name, note1, note2, note3, note4) values ('3', '8', '김밥', '322', '46', '11.1', '10.5');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('한식', '밥류', '1', '비빔밥(400g)', '586', '89.7', '22', '13.9');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('한식', '면류', '2', '칼국수(350g)', '420', '71.7', '16', '8.7');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('기타', '우유류', '3', '시리얼(40g)', '151', '34.8', '2.4', '0.2');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('양식', '빵류', '4', '햄버거(278g)', '619', '48', '29', '34');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('양식', '고기류', '5', '치킨(100g)', '225', '1', '23', '2.3');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('한식', '국류', '6', '순대국밥(300g)', '360', '42.6', '23', '9.9');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('한식', '국류', '7', '뼈해장국(300g)', '309', '7.9', '38.8', '13.3');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('한식', '밥류', '8', '김밥(300g)', '485', '73.5', '12.2', '15.3');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('기타', '고기류', '9', '닭가슴살(100g)', '109', '0', '22.9', '1.2');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('기타', '면류', '10', '쌀국수(600g)', '320', '55.1', '15.6', '4.2');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('한식', '국류', '11', '떡만둣국(700g)', '624', '110.7', '20', '11.3');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('일식', '밥류', '12', '생선초밥(300g)', '461', '76.4', '25.4', '6');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('한식', '밥류', '13', '오징어덮밥(360g)', '484', '79', '25.9', '7.2');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('한식', '밥류', '14', '볶음밥(350g)', '640', '118.9', '19.5', '9.7');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('한식', '국류', '15', '매운탕(600g)', '211', '15.1', '29.1', '3.9');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('한식', '고기류', '16', '삼겹살(200g)', '933', '0.7', '45.1', '83.4');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('기타', '고기류', '17', '오리고기(200g)', '586', '9.8', '48.1', '39.4');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('중식', '면류', '18', '짜장면(650g)', '824', '134.2', '22.3', '22');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('중식', '면류', '19', '짬뽕(500g)', '764', '133.5', '28.7', '12');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('중식', '고기류', '20', '탕수육(300g)', '591', '64.7', '26.9', '23.9');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('양식', '고기류', '21', '스테이크(100g)', '252', '0', '27.2', '15');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('양식', '빵류', '22', '피자(100g)', '244', '26.3', '10.8', '10.5');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('일식', '고기류', '23', '돈까스(100g)', '284', '12.2', '22.5', '15.3');" );
+            db.execSQL( "insert into Food (foodKind, foodType, img, name, note1, note2, note3, note4) values ('일식', '면류', '24', '라면(100g)', '453', '65.5', '9.3', '17.1');" );
         } catch(Exception ex) {
             Log.e(TAG, "INSERT SUPERVISOR ERROR\n", ex);
         }

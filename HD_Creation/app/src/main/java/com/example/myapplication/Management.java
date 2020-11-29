@@ -172,14 +172,15 @@ public class Management extends AppCompatActivity{
         // 데이터 지정
         Resources res = mainContext.getResources();
         Bitmap bm;
-
+        int tmpPhoto;
         int[] Kcal = new int[3]; // 칼로리 계산
         int k = 0;
         for(int i=0; i<3; i++) {
             for(int j=0; j<5; j++){
                 k++;
                 if(imgVal[i][j] != 0) {
-                    bm = BitmapFactory.decodeResource(res, R.drawable.food + imgVal[i][j]); // 이미지 불러오기 메모리 오류 > 스레드+비트맵 설정해봤지만, 메모리 쪽의 다른 문제
+                    tmpPhoto = res.getIdentifier("food"+imgVal[i][j], "drawable", "com.example.myapplication");
+                    bm = BitmapFactory.decodeResource(res, tmpPhoto); // 이미지 불러오기 메모리 오류 > 스레드+비트맵 설정해봤지만, 메모리 쪽의 다른 문제
                     l_i[k].setImageBitmap(bm);
                 }else{ // 이미지가 없는 부분
 //                    bm = BitmapFactory.decodeResource(res, R.drawable.food);

@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
     String nYear, nMonth, nDay = "";    // 현재 날짜
     String sYear,sMonth,sDay = "";      // 선택 날짜
     String timeKind = "morning";        // 시간 구분(아침/점심/저녁)
-    int mFoodKind = 1;                  // Manage 테이블 저장용 변수 (음식1~5)
-    String foodKind = "한식";           // Food 테이블 구분 변수 => (한식/양식..)
+    String foodKind = "전체";           // 나라별 음식 구분
+    String foodType = "밥류";           // 재료별 음식 구분
 
     // DB 관련 변수
     DatabaseHelper dbHelper;
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initSet(){
-        setmFoodKind();
+        setFoodKind();
         setTimeKind();
         setDate();
     }
@@ -131,24 +131,26 @@ public class MainActivity extends AppCompatActivity {
         question();
     }
 
-    private void setmFoodKind(){ //음식구분 스피너
+    private void setFoodKind(){ //음식구분 스피너
         spKind = (Spinner)findViewById(R.id.spKind);
         spKind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String tmpStr = ""+adapterView.getItemAtPosition(i);
                 tmpStr = tmpStr.replaceAll(" ","");
-                if(tmpStr.equals("음식1"))
-                    mFoodKind = 1;
-                else if(tmpStr.equals("음식2"))
-                    mFoodKind = 2;
-                else if(tmpStr.equals("음식3"))
-                    mFoodKind = 3;
-                else if(tmpStr.equals("음식4"))
-                    mFoodKind = 4;
+                if(tmpStr.equals("전체"))
+                    foodKind = "전체";
+                else if(tmpStr.equals("한식"))
+                    foodKind = "한식";
+                else if(tmpStr.equals("중식"))
+                    foodKind = "중식";
+                else if(tmpStr.equals("양식"))
+                    foodKind = "양식";
+                else if(tmpStr.equals("일식"))
+                    foodKind = "일식";
                 else
-                    mFoodKind = 5;
-//                runGame();      // 게임 리셋
+                    foodKind = "기타";
+                runGame();      // 게임 리셋
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
@@ -208,8 +210,12 @@ public class MainActivity extends AppCompatActivity {
         wc_food1_arr3.clear();
         wc_food1_arr4.clear();
 
-        Cursor cursor = db.rawQuery("select * from Food",null);
-//        Cursor cursor = db.rawQuery("select * from Food where mFoodKind='"+mFoodKind+"'",null); // 매개변수로 mFoodKind 선언
+//        Cursor cursor = db.rawQuery("select * from Food",null);
+        Cursor cursor;
+        if(foodKind == "전체")
+            cursor = db.rawQuery("select name, note1, note2, note3, note4 from Food", null); // 매개변수로 mFoodKind 선언
+        else
+            cursor = db.rawQuery("select name, note1, note2, note3, note4 from Food where foodKind='" + foodKind + "'", null); // 매개변수로 mFoodKind 선언
 
         int j = 0;
         if(wcAllRound > cursor.getCount()){
@@ -232,11 +238,11 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i=1; i<=j; i++) {
             cursor.moveToNext();
-            tmpArr0.add("" + cursor.getString(3));
-            tmpArr1.add("" + cursor.getString(4));
-            tmpArr2.add("" + cursor.getString(5));
-            tmpArr3.add("" + cursor.getString(6));
-            tmpArr4.add("" + cursor.getString(7));
+            tmpArr0.add("" + cursor.getString(0));
+            tmpArr1.add("" + cursor.getString(1));
+            tmpArr2.add("" + cursor.getString(2));
+            tmpArr3.add("" + cursor.getString(3));
+            tmpArr4.add("" + cursor.getString(4));
         }
 
         // 해쉬셋 - 중복제거 랜덤 (문자)
@@ -260,11 +266,11 @@ public class MainActivity extends AppCompatActivity {
         // 해쉬셋 랜덤으로 데이터 지정
         for(int i=1; i<=j ;i++){
             cursor.moveToPosition( Integer.parseInt(tmpNum[i])-1);
-            wcAll_List.add("" + cursor.getString(3));
-            wc_food1_arr1.add("" + cursor.getString(4));
-            wc_food1_arr2.add("" + cursor.getString(5));
-            wc_food1_arr3.add("" + cursor.getString(6));
-            wc_food1_arr4.add("" + cursor.getString(7));
+            wcAll_List.add("" + cursor.getString(0));
+            wc_food1_arr1.add("" + cursor.getString(1));
+            wc_food1_arr2.add("" + cursor.getString(2));
+            wc_food1_arr3.add("" + cursor.getString(3));
+            wc_food1_arr4.add("" + cursor.getString(4));
         }
 
         // 초기화
@@ -298,8 +304,14 @@ public class MainActivity extends AppCompatActivity {
             dataSet();
 
             // 이미지 설정
-            Cursor c = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList).toString()+"'", null);
-            Cursor c2 = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList+1).toString()+"'", null);
+            Cursor c, c2;
+            if(foodKind == "전체") {
+                c = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList).toString()+"'", null);
+                c2 = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList+1).toString()+"'", null);
+            }else{
+                c = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList).toString()+"' and foodKind = '"+foodKind+"'", null);
+                c2 = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList+1).toString()+"' and foodKind = '"+foodKind+"'", null);
+            }
 
             String photo = null;
             while (c.moveToNext()){
@@ -318,11 +330,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            Resources res = mainContext.getResources();
-            Bitmap bm = BitmapFactory.decodeResource(res, R.drawable.food + Integer.parseInt(photo));
-            Bitmap bm2 = BitmapFactory.decodeResource(res, R.drawable.food + Integer.parseInt(photo2));
-            wc_food1_img.setImageBitmap(bm);
-            wc_food2_img.setImageBitmap(bm2);
+            int tmpPhoto, tmpPhoto2;
+            int intPhoto = Integer.parseInt(photo);
+            int intPhoto2 = Integer.parseInt(photo2);
+            try {
+                Resources res = mainContext.getResources();
+                tmpPhoto = res.getIdentifier("food"+intPhoto, "drawable", "com.example.myapplication");
+                tmpPhoto2 = res.getIdentifier("food"+intPhoto2, "drawable", "com.example.myapplication");
+                Bitmap bm = BitmapFactory.decodeResource(res, tmpPhoto);
+                Bitmap bm2 = BitmapFactory.decodeResource(res, tmpPhoto2);
+                wc_food1_img.setImageBitmap(bm);
+                wc_food2_img.setImageBitmap(bm2);
+            }catch (Exception e){ }
         }
     }
 
@@ -340,20 +359,47 @@ public class MainActivity extends AppCompatActivity {
                 String nameValue = wcAll_List.get(wcList);
 
                 customDialog("endgame");
-
-                Cursor cursor = db.rawQuery("select * from Manage where dateKind='"+sYear+sMonth+sDay+"' and timeKind='"+timeKind+"' and foodKind='"+mFoodKind+"'",null); // 날짜,시간 조회
-                Cursor img_cursor = db.rawQuery("select img from Food where name='"+wcAll_List.get(wcList)+"'",null); // 이름에 맞는 img
+// closeDialog 이동
+                Cursor cursor = db.rawQuery("select * from Manage where dateKind='"+sYear+sMonth+sDay+"' and timeKind='"+timeKind+"'",null); // 날짜,시간 조회
+                Cursor img_cursor = db.rawQuery("select img, foodType from Food where name='"+wcAll_List.get(wcList)+"'",null); // 이름에 맞는 img
                 while (img_cursor.moveToNext()) {
                     imgValue = img_cursor.getString(0);  // 이미지 값
+                    foodType = img_cursor.getString(1);  // 재료 값
                 }
 
-                if(cursor.getCount() == 0) {
+                Cursor typeCursor;
+                if(foodKind == "전체")
+                    typeCursor = db.rawQuery("select img, name, min(note1) from Food where foodType='"+foodType+"'",null);
+                else
+                    typeCursor = db.rawQuery("select img, name, min(note1) from Food where foodType='"+foodType+"' and foodKind='"+foodKind+"'",null);
+                typeCursor.moveToFirst();
+                Log.e(TAG, "-foodType>"+foodType+"/ foodKind>"+foodKind+"/ string");
+
+                Log.e(TAG, "-진행중-"+typeCursor.getString(0));
+                Log.e(TAG, "-진행중-"+typeCursor.getString(1));
+                Log.e(TAG, "-진행중-"+typeCursor.getString(2));
+                // < 칼로리 계산 >
+                // 높다면
+                // 음식 종류에 따라, 낮은 칼로리 음식 추천 (랜덤), 재추천 기능+버튼
+                // 1.재추천 시 당황, 2.거절할 경우 언짢, 3.수락할 경우 칭찬
+
+                // 적다면
+                // 음식 설명 ( "음식명"은 칼로리도 적고, 영양소도 풍부해! 정말 좋은 선택이야~ ) 등의 대사
+                // 확인 버튼 or 취소( 재시도 ) -> 정말 취소할거야? 당황.
+
+                int tmpCount = cursor.getCount() + 1; // tmp = select of manage count number
+
+                if(tmpCount < 5) {
                     db.execSQL("insert into Manage (dateKind, timeKind, foodKind, img, name) values (?, ?, ?, ?, ?)",
-                            new String[]{sYear + sMonth + sDay, timeKind, ""+mFoodKind, imgValue, nameValue});
+                            new String[]{sYear + sMonth + sDay, timeKind, ""+tmpCount, imgValue, nameValue});
+
                 }else{
-                    db.execSQL("update Manage set img=?, name=? where dateKind=? and timeKind=? and foodKind=?",
-                            new String[] {imgValue, nameValue, sYear + sMonth + sDay, timeKind, ""+mFoodKind});
+//                    int tmpDiv = tmpCount / 5;
+//                    db.execSQL("update Manage set img=?, name=? where dateKind=? and timeKind=? and foodKind=?",
+//                            new String[] {imgValue, nameValue, sYear + sMonth + sDay, timeKind, ""+tmpDiv});
+                    Toast.makeText(this,"음식 리스트가 가득 찼습니다.", Toast.LENGTH_SHORT).show();
                 }
+// closeDialog 이동
             // 중간 라운드
             }else{
                 wcRound /= 2;
