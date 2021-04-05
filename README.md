@@ -1,4 +1,5 @@
-# Chungbuk University Project
-## 1. Android App
+# Chungbuk University
+## 3-2 Industry-Academic Project
+### Android App
 * Health Promotion Diet Management Game App
-* (Ideal WorldCup Game)
+* (Ideal WorldCup Mobile Game)
