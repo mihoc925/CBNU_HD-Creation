@@ -73,7 +73,6 @@ public class Management extends AppCompatActivity{
         setDate();
         allView();
         setValue();
-        //food_list();
     }
 
     public void onClick(View v) {
@@ -223,29 +222,4 @@ public class Management extends AppCompatActivity{
         lunchTxt = (TextView)findViewById(R.id.lunchTxt);
         dinnerTxt = (TextView)findViewById(R.id.dinnerTxt);
     }
-
-// 어뎁터 사용시
-//    private Cursor Cursor_List() {
-//
-//        typeName = "2020-11-20";
-//
-//        String SQL = "select * from Manage where m_date like '%"+typeName+"%'";
-//        Cursor c = db.rawQuery(SQL, null);
-//        return c;
-//    }
-//
-//    private void food_list(){
-//
-//        Cursor cursor = Cursor_List();
-//        startManagingCursor(cursor);
-//
-//        String[] columns = new String[]{"m_name1", "m_name2", "m_name3", "m_name4", "m_name5"};
-//        int[] to = new int[]{R.id.l_t1, R.id.l_t2, R.id.l_t3, R.id.l_t4, R.id.l_t5};
-//        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.activity_manage_list, cursor, columns, to);
-//        manage_list = (ListView)findViewById(R.id.manage_list);
-//        manage_list.setAdapter(adapter);
-//
-//        if (typeNumber == 1) {  // 검색어가 있을경우
-//        }
-//    }
 }

@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:background="@drawable/manage04"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2">
@@ -16,7 +15,6 @@
         android:layout_weight="100"
         android:orientation="vertical">
         <LinearLayout
-            android:background="@drawable/manage04"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="7">
@@ -27,7 +25,6 @@
                 <Button
                     android:id="@+id/manageCalendar"
                     android:text="캘린더"
-                    android:background="@drawable/manage01"
                     style="@style/textStyle_noSize"
                     android:textSize="16sp"
                     android:onClick="onClick"
@@ -36,7 +33,6 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_marginLeft="30dp"
-                android:background="@drawable/manage02"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="15">
@@ -51,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="50"
-            android:background="@drawable/manage04">
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -68,14 +64,13 @@
                     android:layout_weight="10">
 
                     <LinearLayout
-                        android:background="@drawable/manage04"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
 
                         <TextView
-                            android:background="@drawable/manage01"
+                            
                             style="@style/textStyle_noSize"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
@@ -93,7 +88,7 @@
                             android:textSize="14sp" />
                     </LinearLayout>
                     <LinearLayout
-                        android:background="@drawable/manage04"
+
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"/>
@@ -215,14 +210,14 @@
                     android:layout_weight="10">
 
                     <LinearLayout
-                        android:background="@drawable/manage04"
+
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
 
                         <TextView
-                            android:background="@drawable/manage01"
+
                             style="@style/textStyle_noSize"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
@@ -240,7 +235,7 @@
                             android:textSize="14sp" />
                     </LinearLayout>
                     <LinearLayout
-                        android:background="@drawable/manage04"
+
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"/>
@@ -362,14 +357,14 @@
                     android:layout_weight="10">
 
                     <LinearLayout
-                        android:background="@drawable/manage04"
+
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
 
                         <TextView
-                            android:background="@drawable/manage01"
+
                             style="@style/textStyle_noSize"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
@@ -387,7 +382,7 @@
                             android:textSize="14sp" />
                     </LinearLayout>
                     <LinearLayout
-                        android:background="@drawable/manage04"
+
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"/>
@@ -513,7 +508,7 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:background="@drawable/manage04"
+
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2">
