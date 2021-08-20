@@ -59,7 +59,6 @@ public class Ex extends AppCompatActivity {
             ImageButton imageButton = new ImageButton(context);
             ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams( 150, 150 );
             imageButton.setLayoutParams(layoutParams);
-            imageButton.setImageResource(R.drawable.background02);
             imageButton.setBackground(null);
             imageButton.setScaleType(ImageView.ScaleType.FIT_XY);
 

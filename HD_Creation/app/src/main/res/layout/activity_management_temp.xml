@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/manageCalendarBtn"
+        android:text="캘린더"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:text="아침"
+            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+        <ImageButton
+            android:src="@drawable/arrow"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:layout_width="50px"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+</LinearLayout>

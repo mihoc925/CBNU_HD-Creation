@@ -35,12 +35,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.VO.FoodVO;
+import com.google.gson.Gson;
+
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -49,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
     public static Context mainContext;
     GetterSetter getterSetter = new GetterSetter();      // Getter / Setter
+
     // 게임 관련 변수
     ArrayList<String> wcAll_List = new ArrayList<String>();   // 월드컵 리스트
     int wcList, wcRound, wcAllRound = 0;                 // 리스트 / 현 라운드 / 총 라운드
@@ -263,16 +270,30 @@ public class MainActivity extends AppCompatActivity {
         }
 //        Log.e(TAG,"hashNum="+hashNum);
 
-        // 해쉬셋 랜덤으로 데이터 지정
-        for(int i=1; i<=j ;i++){
-            cursor.moveToPosition( Integer.parseInt(tmpNum[i])-1);
-            wcAll_List.add("" + cursor.getString(0));
-            wc_food1_arr1.add("" + cursor.getString(1));
-            wc_food1_arr2.add("" + cursor.getString(2));
-            wc_food1_arr3.add("" + cursor.getString(3));
-            wc_food1_arr4.add("" + cursor.getString(4));
-        }
+        // TODO
+        //for(int i=1; i<=j ;i++){
+        //    cursor.moveToPosition( Integer.parseInt(tmpNum[i])-1);
+        //    Log.e("#############",cursor.getExtras().toString());
+        //    wcAll_List.add("" + cursor.getString(0));
+        //    wc_food1_arr1.add("" + cursor.getString(1));
+        //    wc_food1_arr2.add("" + cursor.getString(2));
+        //    wc_food1_arr3.add("" + cursor.getString(3));
+        //    wc_food1_arr4.add("" + cursor.getString(4));
+        //}
 
+        Map hashMap = new HashMap();
+        Gson gson = new Gson();
+        //cursor.moveToPosition( Integer.parseInt(tmpNum[i])-1);
+        for (int i = 0; i < cursor.getColumnCount(); i++) {
+            cursor.moveToNext();
+            hashMap.put(cursor.getColumnName(i),cursor.getString(i));
+        }
+        FoodVO childFood = gson.fromJson(gson.toJson(hashMap),FoodVO.class);
+        Log.e("###########2", childFood.toString());
+
+        /** 랜덤 !!
+        * Collections.shuffle();
+         */
         // 초기화
         wcList = 0;
         if(wcList != wcAll_List.size()) {   // 데이터가 없을 경우 예외

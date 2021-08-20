@@ -16,8 +16,7 @@
                 android:id="@+id/dial_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/background01"/>
+                android:scaleType="centerCrop" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -33,17 +32,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
-                        <ImageButton
-                            android:id="@+id/wc_result_img1"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="30"
-                            android:onClick="onClick"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:src="@drawable/food5"
-                            android:scaleType="centerCrop" />
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
@@ -83,17 +71,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:orientation="vertical">
-                        <ImageButton
-                            android:id="@+id/wc_result_img2"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="30"
-                            android:onClick="onClick"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:src="@drawable/food9"
-                            android:scaleType="centerCrop" />
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
@@ -127,25 +104,12 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="5">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/diet1"
-                            android:scaleType="centerCrop"/>
 
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="10">
-                        <TextView
-                            android:id="@+id/wc_result_tv"
-                            android:text='"이 음식으로 대체하는 건 어때?"'
-                            style="@style/textStyle_noSize"
-                            android:textSize="20sp"
-                            android:background="@drawable/background02"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
